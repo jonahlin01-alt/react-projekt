@@ -28,7 +28,9 @@ function InformationPage() {
 
       
         <div className="col-12">
-          <Cards title="Globala CO₂-utsläpp">
+          <Cards title="Globala CO₂-utsläpp"> 
+          <Cards text= "Anpassa Diagrammet"></Cards>
+
             {co2data.length > 0 && (
               <Co2LineChart myData={co2data} />
             )}
