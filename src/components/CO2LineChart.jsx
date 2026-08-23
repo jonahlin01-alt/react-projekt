@@ -4,10 +4,7 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
-  ResponsiveContainer,
 } from "recharts";
 
 export const Co2LineChart = ({ myData }) => {
@@ -28,6 +25,8 @@ export const Co2LineChart = ({ myData }) => {
   return (
     <div>
       <div className="row g-3 mb-4">
+
+        {/* Startår */}
         <div className="col-md-6">
           <label htmlFor="startYear" className="form-label">
             Startår
@@ -37,7 +36,9 @@ export const Co2LineChart = ({ myData }) => {
             id="startYear"
             className="form-select"
             value={startYear}
-            onChange={(e) => setStartYear(Number(e.target.value))}
+            onChange={(e) => {
+              setStartYear(Number(e.target.value));
+            }}
           >
             {years.map((year) => (
               <option key={year} value={year}>
@@ -47,6 +48,7 @@ export const Co2LineChart = ({ myData }) => {
           </select>
         </div>
 
+        {/* Slutår */}
         <div className="col-md-6">
           <label htmlFor="endYear" className="form-label">
             Slutår
@@ -56,7 +58,9 @@ export const Co2LineChart = ({ myData }) => {
             id="endYear"
             className="form-select"
             value={endYear}
-            onChange={(e) => setEndYear(Number(e.target.value))}
+            onChange={(e) => {
+              setEndYear(Number(e.target.value));
+            }}
           >
             {years.map((year) => (
               <option key={year} value={year}>
@@ -65,39 +69,34 @@ export const Co2LineChart = ({ myData }) => {
             ))}
           </select>
         </div>
+
       </div>
 
-      <div style={{ width: "100%", height: 400 }}>
-        <ResponsiveContainer>
-          <LineChart
-            data={filteredData}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 20,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
+      {/* Diagram */}
+      <LineChart
+        width={800}
+        height={400}
+        data={filteredData}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 20,
+        }}
+      >
+        <XAxis dataKey="Year" />
 
-            <XAxis dataKey="Year" />
+        <YAxis />
 
-            <YAxis />
+        <Tooltip />
 
-            <Tooltip />
-
-            <Legend />
-
-            <Line
-              type="monotone"
-              dataKey="Total"
-              name="Totala CO₂-utsläpp"
-              stroke="#198754"
-              dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+        <Line
+          type="monotone"
+          dataKey="Total"
+          name="Totala CO₂-utsläpp"
+          stroke="#198754"
+        />
+      </LineChart>
     </div>
   );
 };
