@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Cards from "../components/Cards.jsx";
 import { Co2Diagram } from "../components/Co2Diagram";
 
 function InformationPage() {
@@ -39,8 +40,8 @@ function InformationPage() {
 
         <div className="row g-4 justify-content-center">
           <div className="col-12 col-lg-6 d-flex">
-            <section
-              className="w-100 rounded-3 p-4"
+            <Cards
+              className="w-100 p-4"
               style={{
                 backgroundColor: "#fbefd9",
               }}
@@ -77,12 +78,12 @@ function InformationPage() {
                 använda mer förnybar energi, cykla eller åka
                 kollektivt och vara mer sparsamma med resurser.
               </p>
-            </section>
+            </Cards>
           </div>
 
           <div className="col-12 col-lg-6 d-flex">
-            <section
-              className="w-100 rounded-3 p-4 d-flex flex-column"
+            <Cards
+              className="w-100 p-4 d-flex flex-column"
               style={{
                 backgroundColor: "#e7f6df",
               }}
@@ -96,9 +97,7 @@ function InformationPage() {
                     minHeight: "300px",
                   }}
                 >
-                  <p className="mb-0">
-                    Laddar klimatdata...
-                  </p>
+                  
                 </div>
               )}
 
@@ -114,7 +113,7 @@ function InformationPage() {
                 gått mycket snabbare än några naturliga förändringar
                 i jordens historia.
               </p>
-            </section>
+            </Cards>
           </div>
         </div>
 
