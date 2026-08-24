@@ -1,23 +1,20 @@
 function HomePage({ setPage, onLogout }) {
   const cards = [
     {
-      title: "KOLDIOXIDUTSLÄPP",
       image: "/ella-ivanescu-JbfhNrpQ_dw-unsplash.jpg",
-      alt: "Koldioxidutsläpp",
+      alt: "Illustration av en fabrik med rök och CO₂-symbol som representerar koldioxidutsläpp",
       text: "Koldioxidutsläppen har ökat genom förbränning av fossila bränslen. Detta påverkar vår atmosfär och genom det även vårt klimat.",
       page: "co2",
     },
     {
-      title: "GLOBALA TEMPERATURER",
       image: "/javier-miranda-7bnvNN3R_eo-unsplash.jpg",
-      alt: "Globala temperaturer",
+      alt: "Illustration av en jordglob, uppåtgående pilar och termometer som representerar globala temperaturer",
       text: "Vi lever på ett sätt som påverkar jordens temperatur. Den globala temperaturen har ökat under många år, delvis på grund av våra utsläpp.",
       page: "temperature",
     },
     {
-      title: "GLACIÄRSTORLEKAR",
       image: "/magdalena-kula-manchee-qpyZIffH78I-unsplash.jpg",
-      alt: "Glaciär",
+      alt: "Illustration av en smältande glaciär och nedåtpil som representerar minskande glaciärstorlekar",
       text: "Jordens glaciärer påverkas i stor grad av jordens temperaturer. Under de senaste åren har glaciärernas storlekar minskat, och havsnivåer ökat.",
       page: "glaciers",
     },
@@ -119,7 +116,7 @@ function HomePage({ setPage, onLogout }) {
           <div className="d-flex flex-column gap-3">
             {cards.map((card) => (
               <article
-                key={card.title}
+                key={card.page}
                 className="rounded-3 p-3"
                 style={{
                   backgroundColor: "#fbefd9",
@@ -127,24 +124,13 @@ function HomePage({ setPage, onLogout }) {
               >
                 <div className="row g-2 align-items-center">
                   <div className="col-5 text-center">
-                    <h2
-                      className="fw-bold mb-2"
-                      style={{
-                        fontSize: "0.58rem",
-                        color: "#394543",
-                      }}
-                    >
-                      {card.title}
-                    </h2>
-
                     <img
                       src={card.image}
                       alt={card.alt}
                       style={{
                         width: "100%",
-                        height: "88px",
-                        objectFit: "cover",
-                        borderRadius: "4px",
+                        height: "115px",
+                        objectFit: "contain",
                       }}
                     />
                   </div>
@@ -211,7 +197,7 @@ function HomePage({ setPage, onLogout }) {
           }}
         >
           <section
-            className="rounded-3 p-3 p-md-4 mb-4"
+            className="rounded-3 p-4 mb-4"
             style={{
               backgroundColor: "#e8f7df",
             }}
@@ -220,12 +206,12 @@ function HomePage({ setPage, onLogout }) {
               <div className="col-md-6">
                 <div className="d-flex align-items-center">
                   <div
-                    className="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0"
+                    className="rounded-circle d-flex align-items-center justify-content-center me-3"
                     style={{
                       width: "64px",
                       height: "64px",
                       backgroundColor: "#f4d7a1",
-                      border: "2px solid #b78b45",
+                      border: "1px solid #8a6c3a",
                       fontSize: "34px",
                     }}
                   >
@@ -294,63 +280,51 @@ function HomePage({ setPage, onLogout }) {
             {cards.map((card) => (
               <div
                 className="col-md-4 d-flex"
-                key={card.title}
+                key={card.page}
               >
                 <article
-                  className="w-100 rounded-3 overflow-hidden d-flex flex-column"
+                  className="w-100 rounded-3 p-3 text-center d-flex flex-column"
                   style={{
                     backgroundColor: "#fbefd9",
-                    minHeight: "390px",
+                    minHeight: "380px",
                   }}
                 >
-                  <h2
-                    className="fw-bold text-center px-3 pt-3 mb-3"
-                    style={{
-                      fontSize: "1rem",
-                      color: "#3e4947",
-                    }}
-                  >
-                    {card.title}
-                  </h2>
-
                   <img
                     src={card.image}
                     alt={card.alt}
                     style={{
                       width: "100%",
-                      height: "165px",
-                      objectFit: "cover",
+                      height: "180px",
+                      objectFit: "contain",
                     }}
                   />
 
-                  <div className="p-3 text-center d-flex flex-column flex-grow-1">
-                    <p
-                      className="mb-3"
-                      style={{
-                        fontSize: "0.78rem",
-                        lineHeight: "1.4",
-                      }}
-                    >
-                      {card.text}
-                    </p>
+                  <p
+                    className="mt-3 mb-3"
+                    style={{
+                      fontSize: "0.78rem",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {card.text}
+                  </p>
 
-                    <button
-                      type="button"
-                      onClick={() => setPage(card.page)}
-                      className="mt-auto"
-                      style={{
-                        background: "none",
-                        border: "none",
-                        padding: 0,
-                        color: "#28651d",
-                        fontSize: "0.78rem",
-                        textDecoration: "underline",
-                        textUnderlineOffset: "2px",
-                      }}
-                    >
-                      Läs mer...
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setPage(card.page)}
+                    className="mt-auto"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      color: "#28651d",
+                      fontSize: "0.78rem",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "2px",
+                    }}
+                  >
+                    Läs mer...
+                  </button>
                 </article>
               </div>
             ))}
