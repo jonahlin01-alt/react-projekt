@@ -1,35 +1,184 @@
-function ProgressBar() {
+function ProgressBar({ setPage }) {
+  const goToProfile = () => {
+    if (setPage) {
+      setPage("profile");
+    }
+  };
+
   return (
-    <div className="container-fluid bg-light rounded p-3 border">
-      <div className="row align-items-center">
-        <div className="col-12 col-md-6 d-flex align-items-center mb-3 mb-md-0">
+    <section
+      className="rounded-3 p-3 p-md-4"
+      style={{
+        backgroundColor: "#e8f7df",
+      }}
+    >
+      <div className="d-md-none text-center">
+        <button
+          type="button"
+          onClick={goToProfile}
+          aria-label="Gå till profilsidan"
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            borderRadius: "50%",
+          }}
+        >
           <img
-            src="https://via.placeholder.com/56"
-            alt="Profilbild"
-            className="rounded-circle border me-3"
-            width="56"
-            height="56"
+            src="/AnnaAvatar.png"
+            alt="Profilbild för Anna"
+            className="rounded-circle"
+            style={{
+              width: "70px",
+              height: "70px",
+              objectFit: "cover",
+              cursor: "pointer",
+            }}
           />
+        </button>
 
-          <div>
-            <h4 className="mb-1">Välkommen tillbaka Anna!</h4>
-            <p className="mb-0 text-muted">
-              Läs igenom en ny lektion för att
-              <br />
-              nå dagens mål!
-            </p>
-          </div>
+        <h2
+          className="mt-2 mb-2"
+          style={{
+            fontSize: "1rem",
+            fontWeight: 400,
+          }}
+        >
+          Välkommen tillbaka Anna!
+        </h2>
+
+        <p className="small mb-3">
+          Läs igenom en ny lektion för att nå dagens mål!
+        </p>
+
+        <div
+          className="mx-auto mb-3"
+          style={{
+            width: "100px",
+            height: "1px",
+            backgroundColor: "#174d08",
+          }}
+        />
+
+        <p className="mb-2">
+          2 av 3 lektioner genomförda!
+        </p>
+
+        <div
+          className="progress"
+          style={{
+            height: "19px",
+            borderRadius: "7px",
+            backgroundColor: "#fff1d4",
+            border: "1px solid #8d815f",
+          }}
+        >
+          <div
+            className="progress-bar"
+            role="progressbar"
+            aria-label="2 av 3 lektioner genomförda"
+            aria-valuenow="67"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{
+              width: "67%",
+              backgroundColor: "#174d08",
+            }}
+          />
         </div>
+      </div>
 
-        <div className="col-12 col-md-6">
-          <h4 className="mb-3 text-md-end">2 av 3 lektioner genomförda!</h4>
+      <div className="d-none d-md-block">
+        <div className="row align-items-center g-3">
+          <div className="col-md-6">
+            <div className="d-flex align-items-center">
+              <button
+                type="button"
+                onClick={goToProfile}
+                aria-label="Gå till profilsidan"
+                className="me-3"
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  borderRadius: "50%",
+                }}
+              >
+                <img
+                  src="/AnnaAvatar.png"
+                  alt="Profilbild för Anna"
+                  className="rounded-circle"
+                  style={{
+                    width: "74px",
+                    height: "74px",
+                    objectFit: "cover",
+                    cursor: "pointer",
+                  }}
+                />
+              </button>
 
-          <div className="progress">
-            <div className="progress-bar bg-success w-75"></div>
+              <div>
+                <h2
+                  className="mb-1"
+                  style={{
+                    fontSize: "1.05rem",
+                    fontWeight: 400,
+                  }}
+                >
+                  Välkommen tillbaka Anna!
+                </h2>
+
+                <p
+                  className="mb-0"
+                  style={{
+                    fontSize: "0.8rem",
+                    lineHeight: "1.4",
+                  }}
+                >
+                  Läs igenom en ny lektion för att
+                  <br />
+                  nå dagens mål!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-6">
+            <p
+              className="mb-2"
+              style={{
+                fontSize: "0.95rem",
+              }}
+            >
+              2 av 3 lektioner genomförda!
+            </p>
+
+            <div
+              className="progress"
+              style={{
+                height: "20px",
+                borderRadius: "8px",
+                backgroundColor: "#fff1d4",
+                border: "1px solid #8d815f",
+              }}
+            >
+              <div
+                className="progress-bar"
+                role="progressbar"
+                aria-label="2 av 3 lektioner genomförda"
+                aria-valuenow="67"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={{
+                  width: "67%",
+                  backgroundColor: "#174d08",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

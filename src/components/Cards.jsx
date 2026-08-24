@@ -1,38 +1,20 @@
-function Cards({ title, text, buttonText, onButtonClick, children }) {
+function Cards({
+  children,
+  backgroundColor = "#fbefd9",
+  border = "none",
+  className = "",
+  style = {},
+}) {
   return (
     <div
-      className="card border-0 shadow-sm"
+      className={`rounded-3 ${className}`}
       style={{
-        backgroundColor: "#e9f8df",
-        borderRadius: "8px",
+        backgroundColor,
+        border,
+        ...style,
       }}
     >
-      <div className="card-body p-1">
-
-        {title && (
-          <h5 className="card-title">
-            {title}
-          </h5>
-        )}
-
-        {text && (
-          <p className="card-text small">
-            {text}
-          </p>
-        )}
-
-        {children}
-
-        {buttonText && (
-          <button
-            className="btn btn-success w-100 mt-3"
-            onClick={onButtonClick}
-          >
-            {buttonText}
-          </button>
-        )}
-
-      </div>
+      {children}
     </div>
   );
 }

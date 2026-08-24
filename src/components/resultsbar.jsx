@@ -1,20 +1,73 @@
 function ResultsBar() {
   return (
-    <div className="container-fluid border rounded bg-warning-subtle py-4 px-3">
-      <div className="row align-items-center text-center">
-        <div className="col-12 col-md-4 mb-3 mb-md-0">
-          <h2 className="mb-0">#6 i din klass</h2>
-        </div>
+    <section
+      className="rounded-3"
+      style={{
+        backgroundColor: "#fbefd9",
+      }}
+    >
+      <div className="d-md-none p-3">
+        <div className="d-flex align-items-center">
+          <span
+            className="me-3"
+            aria-hidden="true"
+            style={{
+              fontSize: "2.4rem",
+            }}
+          >
+            🏆
+          </span>
 
-        <div className="col-12 col-md-4 mb-3 mb-md-0">
-          <div className="display-3 text-warning">🏆</div>
-        </div>
+          <div>
+            <p className="mb-1">
+              #6 i din klass
+            </p>
 
-        <div className="col-12 col-md-4">
-          <h2 className="mb-0">#20 i din skola</h2>
+            <p className="mb-0">
+              #20 i din skola
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div className="d-none d-md-block px-4 py-3">
+        <div className="row align-items-center text-center">
+          <div className="col-5">
+            <p
+              className="mb-0"
+              style={{
+                fontSize: "0.95rem",
+              }}
+            >
+              #6 i din klass
+            </p>
+          </div>
+
+          <div className="col-2">
+            <span
+              aria-hidden="true"
+              style={{
+                fontSize: "3rem",
+                lineHeight: 1,
+              }}
+            >
+              🏆
+            </span>
+          </div>
+
+          <div className="col-5">
+            <p
+              className="mb-0"
+              style={{
+                fontSize: "0.95rem",
+              }}
+            >
+              #20 i din skola
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

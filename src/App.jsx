@@ -40,7 +40,10 @@ function App() {
       )}
 
       {page === "profile" && isLoggedIn && (
-        <ProfilePage onLogout={handleLogout} />
+        <ProfilePage
+          setPage={setPage}
+          onLogout={handleLogout}
+        />
       )}
 
       {(page === "information" ||
