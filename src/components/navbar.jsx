@@ -82,7 +82,7 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
             onClick={() => goToPage("home")}
             style={{
               fontFamily: '"Fontdiner Swanky", serif',
-              fontSize: "36px",
+              fontSize: "1.65rem",
               color: navColor,
               background: "none",
               border: "none",
@@ -121,7 +121,7 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
 
               {showDropdown && (
                 <div
-                  className="position-absolute end-0 mt-2 rounded shadow p-2"
+                  className="position-absolute end-0 mt-2 rounded p-2"
                   style={{
                     minWidth: "220px",
                     zIndex: 3000,
@@ -129,6 +129,7 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
                     border: isLoggedIn
                       ? "none"
                       : "1px solid #e5e5e5",
+                    boxShadow: "0 8px 18px rgba(0, 0, 0, 0.15)",
                   }}
                 >
                   <button
@@ -303,7 +304,7 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
               backgroundColor: navBackground,
               padding: "25px 26px",
               zIndex: 3000,
-              boxShadow: "0 8px 18px rgba(0, 0, 0, 0.15)",
+              boxShadow: "-8px 10px 24px rgba(0, 0, 0, 0.22)",
               borderLeft: isLoggedIn
                 ? "none"
                 : "1px solid #e5e5e5",

@@ -40,20 +40,33 @@ function HomePage({ setPage, onLogout }) {
               backgroundColor: "#e8f7df",
             }}
           >
-            <img
-              src="/AnnaAvatar.png"
-              alt="Avatar för Anna"
-              className="rounded-circle mx-auto mb-2"
+            <button
+              type="button"
+              onClick={() => setPage("profile")}
+              aria-label="Gå till profilsidan"
               style={{
-                width: "70px",
-                height: "70px",
-                objectFit: "cover",
-                border: "1px solid #8a6c3a",
+                background: "none",
+                border: "none",
+                padding: 0,
+                borderRadius: "50%",
               }}
-            />
+            >
+              <img
+                src="/AnnaAvatar.png"
+                alt="Avatar för Anna"
+                className="rounded-circle"
+                style={{
+                  width: "70px",
+                  height: "70px",
+                  objectFit: "cover",
+                  border: "1px solid #8a6c3a",
+                  cursor: "pointer",
+                }}
+              />
+            </button>
 
             <h2
-              className="mb-2"
+              className="mb-2 mt-2"
               style={{
                 fontSize: "1rem",
                 fontWeight: 400,
@@ -62,12 +75,7 @@ function HomePage({ setPage, onLogout }) {
               Välkommen tillbaka Anna!
             </h2>
 
-            <p
-              className="mb-3"
-              style={{
-                fontSize: "0.68rem",
-              }}
-            >
+            <p className="small mb-3">
               Läs igenom en ny lektion för att nå dagens mål!
             </p>
 
@@ -80,12 +88,7 @@ function HomePage({ setPage, onLogout }) {
               }}
             />
 
-            <p
-              className="mb-2"
-              style={{
-                fontSize: "0.9rem",
-              }}
-            >
+            <p className="mb-2">
               2 av 3 lektioner genomförda!
             </p>
 
@@ -137,10 +140,9 @@ function HomePage({ setPage, onLogout }) {
 
                   <div className="col-7">
                     <p
-                      className="text-center mb-0"
+                      className="small text-center mb-0"
                       style={{
-                        fontSize: "0.7rem",
-                        lineHeight: "1.2",
+                        lineHeight: "1.3",
                       }}
                     >
                       {card.text}
@@ -148,16 +150,16 @@ function HomePage({ setPage, onLogout }) {
                   </div>
                 </div>
 
-                <div className="text-center mt-1">
+                <div className="text-center mt-2">
                   <button
                     type="button"
                     onClick={() => setPage(card.page)}
+                    className="small"
                     style={{
                       background: "none",
                       border: "none",
                       color: "#487c2d",
                       padding: 0,
-                      fontSize: "0.65rem",
                       textDecoration: "underline",
                       textUnderlineOffset: "2px",
                     }}
@@ -173,12 +175,12 @@ function HomePage({ setPage, onLogout }) {
             <button
               type="button"
               onClick={onLogout}
+              className="small"
               style={{
                 background: "none",
                 border: "none",
                 padding: 0,
                 color: "#000",
-                fontSize: "0.8rem",
                 textDecoration: "underline",
                 textUnderlineOffset: "3px",
               }}
@@ -205,17 +207,31 @@ function HomePage({ setPage, onLogout }) {
             <div className="row align-items-center g-3">
               <div className="col-md-6">
                 <div className="d-flex align-items-center">
-                  <img
-                    src="/AnnaAvatar.png"
-                    alt="Avatar för Anna"
-                    className="rounded-circle me-3"
+                  <button
+                    type="button"
+                    onClick={() => setPage("profile")}
+                    aria-label="Gå till profilsidan"
+                    className="me-3"
                     style={{
-                      width: "64px",
-                      height: "64px",
-                      objectFit: "cover",
-                      border: "1px solid #8a6c3a",
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      borderRadius: "50%",
                     }}
-                  />
+                  >
+                    <img
+                      src="/AnnaAvatar.png"
+                      alt="Avatar för Anna"
+                      className="rounded-circle"
+                      style={{
+                        width: "64px",
+                        height: "64px",
+                        objectFit: "cover",
+                        border: "1px solid #8a6c3a",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </button>
 
                   <div>
                     <h2
