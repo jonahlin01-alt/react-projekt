@@ -27,10 +27,11 @@ export const Co2LineChart = ({ myData }) => {
   return (
     <div>
       <div
-        className="w-100 rounded"
+        className="w-100 rounded-3"
         style={{
           height: "280px",
-          backgroundColor: "#e9f8df",
+          backgroundColor: "#fff0cf",
+          padding: "12px 8px 4px 4px",
         }}
       >
         <ResponsiveContainer width="100%" height="100%">
@@ -45,24 +46,24 @@ export const Co2LineChart = ({ myData }) => {
           >
             <XAxis
               dataKey="Year"
-              tickMargin={8}
               height={35}
+              tickMargin={7}
               tick={{
-                fontSize: 11,
+                fontSize: 10,
               }}
             />
 
             <YAxis
               width={55}
-              tickMargin={6}
+              tickMargin={5}
               tick={{
-                fontSize: 11,
+                fontSize: 10,
               }}
             />
 
             <Tooltip
               contentStyle={{
-                fontSize: "12px",
+                fontSize: "11px",
               }}
             />
 
@@ -70,8 +71,8 @@ export const Co2LineChart = ({ myData }) => {
               type="monotone"
               dataKey="Total"
               name="CO₂-utsläpp"
-              stroke="#198754"
-              strokeWidth={2.5}
+              stroke="#d95b27"
+              strokeWidth={3}
               dot={false}
             />
           </LineChart>
@@ -81,20 +82,20 @@ export const Co2LineChart = ({ myData }) => {
       <p
         className="text-center mt-3 mb-2"
         style={{
-          fontSize: "12px",
+          fontSize: "0.7rem",
         }}
       >
         Anpassa diagrammet
       </p>
 
-      <div className="row g-2">
+      <div className="row g-2 justify-content-center">
         <div className="col-6">
           <select
             className="form-select form-select-sm"
             value={startYear}
             onChange={(e) => setStartYear(Number(e.target.value))}
             style={{
-              fontSize: "12px",
+              fontSize: "0.7rem",
             }}
           >
             {years.map((year) => (
@@ -114,7 +115,7 @@ export const Co2LineChart = ({ myData }) => {
             value={endYear}
             onChange={(e) => setEndYear(Number(e.target.value))}
             style={{
-              fontSize: "12px",
+              fontSize: "0.7rem",
             }}
           >
             {years.map((year) => (
