@@ -10,9 +10,7 @@ function InformationPage() {
       .then((data) => {
         setCo2data(data);
       })
-      .catch((error) => {
-        console.error("Kunde inte hämta CO₂-data:", error);
-      });
+      
   }, []);
 
   return (

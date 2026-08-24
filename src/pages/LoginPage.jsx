@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function LoginPage({ onLogin }) {
-  const [username, setUsername] = useState("Anna");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
@@ -122,3 +122,5 @@ function LoginPage({ onLogin }) {
     </main>
   );
 }
+
+export default LoginPage;
