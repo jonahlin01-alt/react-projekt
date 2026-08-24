@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export const Co2LineChart = ({ myData }) => {
+export const Co2Diagram = ({ myData }) => {
   const years = myData.map((item) => Number(item.Year));
 
   const [startYear, setStartYear] = useState(Math.min(...years));

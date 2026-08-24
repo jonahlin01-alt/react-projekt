@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Co2LineChart } from "../components/Co2LineChart";
+import { Co2Diagram } from "../components/Co2Diagram";
 
 function InformationPage() {
   const [co2data, setCo2data] = useState([]);
@@ -88,7 +88,7 @@ function InformationPage() {
               }}
             >
               {co2data.length > 0 ? (
-                <Co2LineChart myData={co2data} />
+                <Co2Diagram myData={co2data} />
               ) : (
                 <div
                   className="d-flex justify-content-center align-items-center"
