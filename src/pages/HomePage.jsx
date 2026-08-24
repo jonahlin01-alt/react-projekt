@@ -1,20 +1,20 @@
 function HomePage({ setPage, onLogout }) {
   const cards = [
     {
-      image: "/ella-ivanescu-JbfhNrpQ_dw-unsplash.jpg",
-      alt: "Illustration av en fabrik med rök och CO₂-symbol som representerar koldioxidutsläpp",
+      image: "/koldioxidutsläpp.png",
+      alt: "Illustration av koldioxidutsläpp från en fabrik med en CO₂-symbol",
       text: "Koldioxidutsläppen har ökat genom förbränning av fossila bränslen. Detta påverkar vår atmosfär och genom det även vårt klimat.",
       page: "co2",
     },
     {
-      image: "/javier-miranda-7bnvNN3R_eo-unsplash.jpg",
-      alt: "Illustration av en jordglob, uppåtgående pilar och termometer som representerar globala temperaturer",
+      image: "/globalatempraturer.png",
+      alt: "Illustration av jorden med stigande pilar och en termometer som visar globala temperaturer",
       text: "Vi lever på ett sätt som påverkar jordens temperatur. Den globala temperaturen har ökat under många år, delvis på grund av våra utsläpp.",
       page: "temperature",
     },
     {
-      image: "/magdalena-kula-manchee-qpyZIffH78I-unsplash.jpg",
-      alt: "Illustration av en smältande glaciär och nedåtpil som representerar minskande glaciärstorlekar",
+      image: "/glaciärstorlekar.png",
+      alt: "Illustration av en glaciär med en nedåtgående pil som visar minskande glaciärstorlekar",
       text: "Jordens glaciärer påverkas i stor grad av jordens temperaturer. Under de senaste åren har glaciärernas storlekar minskat, och havsnivåer ökat.",
       page: "glaciers",
     },
@@ -40,18 +40,17 @@ function HomePage({ setPage, onLogout }) {
               backgroundColor: "#e8f7df",
             }}
           >
-            <div
-              className="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2"
+            <img
+              src="/AnnaAvatar.png"
+              alt="Avatar för Anna"
+              className="rounded-circle mx-auto mb-2"
               style={{
                 width: "70px",
                 height: "70px",
-                backgroundColor: "#f4d7a1",
+                objectFit: "cover",
                 border: "1px solid #8a6c3a",
-                fontSize: "38px",
               }}
-            >
-              👩
-            </div>
+            />
 
             <h2
               className="mb-2"
@@ -102,6 +101,7 @@ function HomePage({ setPage, onLogout }) {
               <div
                 className="progress-bar"
                 role="progressbar"
+                aria-label="2 av 3 lektioner genomförda"
                 aria-valuenow="67"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -205,18 +205,17 @@ function HomePage({ setPage, onLogout }) {
             <div className="row align-items-center g-3">
               <div className="col-md-6">
                 <div className="d-flex align-items-center">
-                  <div
-                    className="rounded-circle d-flex align-items-center justify-content-center me-3"
+                  <img
+                    src="/AnnaAvatar.png"
+                    alt="Avatar för Anna"
+                    className="rounded-circle me-3"
                     style={{
                       width: "64px",
                       height: "64px",
-                      backgroundColor: "#f4d7a1",
+                      objectFit: "cover",
                       border: "1px solid #8a6c3a",
-                      fontSize: "34px",
                     }}
-                  >
-                    👩
-                  </div>
+                  />
 
                   <div>
                     <h2
@@ -263,6 +262,7 @@ function HomePage({ setPage, onLogout }) {
                   <div
                     className="progress-bar"
                     role="progressbar"
+                    aria-label="2 av 3 lektioner genomförda"
                     aria-valuenow="67"
                     aria-valuemin="0"
                     aria-valuemax="100"

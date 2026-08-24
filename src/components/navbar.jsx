@@ -82,7 +82,7 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
             onClick={() => goToPage("home")}
             style={{
               fontFamily: '"Fontdiner Swanky", serif',
-              fontSize: "1.65rem",
+              fontSize: "36px",
               color: navColor,
               background: "none",
               border: "none",

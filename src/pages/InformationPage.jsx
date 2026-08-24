@@ -48,13 +48,13 @@ function InformationPage() {
               }}
             >
               <img
-                src="/ella-ivanescu-JbfhNrpQ_dw-unsplash.jpg"
-                alt="Koldioxidutsläpp från industri"
-                className="img-fluid rounded-3 mb-4"
+                src="/koldioxidutsläpp.png"
+                alt="Illustration av koldioxidutsläpp från en fabrik med en CO₂-symbol"
+                className="img-fluid mb-4"
                 style={{
                   width: "100%",
-                  height: "220px",
-                  objectFit: "cover",
+                  height: "230px",
+                  objectFit: "contain",
                 }}
               />
 
@@ -90,8 +90,6 @@ function InformationPage() {
                 att minska våra utsläpp, till exempel genom att
                 använda mer förnybar energi, cykla eller åka
                 kollektivt och vara mer sparsamma med resurser.
-                Det handlar om att ta hand om vår planet så att även
-                framtida generationer kan leva tryggt och säkert.
               </p>
             </section>
           </div>
@@ -112,14 +110,7 @@ function InformationPage() {
                     minHeight: "300px",
                   }}
                 >
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontSize: "0.85rem",
-                    }}
-                  >
-                    Laddar klimatdata...
-                  </p>
+                  
                 </div>
               )}
 
