@@ -61,9 +61,6 @@ function LoginPage({ onLogin }) {
           </button>
         </form>
       </div>
-      <a className="text-center fs-2 text-decoration-underline text-dark" href="LoginPage" onClick={() => setIsLoggedIn(false)}>
-          Logga ut
-        </a>
     </div>
   );
 }

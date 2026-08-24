@@ -2,7 +2,7 @@ import ProgressBar from '../components/progressbar.jsx';
 import Cards from '../components/Cards.jsx';
 import ResultsBar from '../components/resultsbar.jsx';
 
-function HomePage() {
+function HomePage({ onLogout }) {
   return (
     <div className="container py-4">
       <ProgressBar />
@@ -37,13 +37,13 @@ function HomePage() {
         </div>
       </div>
       <div className="text-center">
-        <a
-          className="fs-2 text-decoration-underline text-dark"
-          href="LoginPage"
-          onClick={() => setIsLoggedIn(false)}
+        <button
+          type="button"
+          className="btn btn-outline-danger fs-5 mt-3"
+          onClick={onLogout}
         >
           Logga ut
-        </a>
+        </button>
       </div>
     </div>
   );

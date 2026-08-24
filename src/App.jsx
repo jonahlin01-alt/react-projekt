@@ -9,11 +9,16 @@ function App() {
   const [page, setPage] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setPage('login');
+  };
+
   return (
     <>
       <Navbar activePage={page} setPage={setPage} isLoggedIn={isLoggedIn} />
 
-      {page === 'home' && <HomePage />}
+      {page === 'home' && <HomePage onLogout={handleLogout} />}
       {page === 'login' && (
         <LoginPage
           onLogin={() => {
@@ -22,7 +27,7 @@ function App() {
           }}
         />
       )}
-      {page === 'profile' && isLoggedIn && <ProfilePage />}
+      {page === 'profile' && isLoggedIn && <ProfilePage onLogout={handleLogout} />}
       {(page === 'information' ||
         page === 'development' ||
         page === 'co2' ||
