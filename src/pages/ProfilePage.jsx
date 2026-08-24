@@ -1,13 +1,17 @@
+import Cards from "../components/Cards.jsx";
+import ProgressBar from "../components/progressbar.jsx";
+import ResultsBar from "../components/resultsbar.jsx";
+
 function ProfilePage({ onLogout, setPage }) {
   const completedLessons = [
     {
       image: "/koldioxidutsläpp.png",
-      alt: "Illustration av koldioxidutsläpp från en fabrik med en CO₂-symbol",
+      alt: "Illustration av den genomförda lektionen om koldioxidutsläpp",
       page: "co2",
     },
     {
       image: "/globalatempraturer.png",
-      alt: "Illustration av jorden med stigande pilar och en termometer som visar globala temperaturer",
+      alt: "Illustration av den genomförda lektionen om globala temperaturer",
       page: "temperature",
     },
   ];
@@ -19,132 +23,34 @@ function ProfilePage({ onLogout, setPage }) {
         minHeight: "100vh",
       }}
     >
-      <div className="d-md-none px-3 py-3">
+      <div
+        className="container py-4"
+        style={{
+          maxWidth: "1200px",
+        }}
+      >
+        <ProgressBar setPage={setPage} />
+
         <div
-          className="mx-auto"
+          className="mx-auto mt-4"
           style={{
-            maxWidth: "390px",
+            maxWidth: "860px",
           }}
         >
-          <section
-            className="rounded-3 text-center p-3 mb-3"
-            style={{
-              backgroundColor: "#e8f7df",
-            }}
-          >
-            <img
-              src="/AnnaAvatar.png"
-              alt="Avatar för Anna"
-              className="rounded-circle mx-auto mb-2"
-              style={{
-                width: "62px",
-                height: "62px",
-                objectFit: "cover",
-                border: "1px solid #8a6c3a",
-              }}
-            />
+          <ResultsBar />
+        </div>
 
-            <p
-              className="mb-2"
-              style={{
-                fontSize: "0.9rem",
-              }}
-            >
-              Välkommen tillbaka Anna!
-            </p>
-
-            <p
-              className="mb-4"
-              style={{
-                fontSize: "0.65rem",
-              }}
-            >
-              Läs igenom en ny lektion för att nå dagens mål!
-            </p>
-
-            <p
-              className="mb-2"
-              style={{
-                fontSize: "0.8rem",
-              }}
-            >
-              2 av 3 lektioner genomförda!
-            </p>
-
-            <div
-              className="progress"
-              style={{
-                height: "18px",
-                borderRadius: "7px",
-                backgroundColor: "#fff1d4",
-                border: "1px solid #8d815f",
-              }}
-            >
-              <div
-                className="progress-bar"
-                role="progressbar"
-                aria-label="2 av 3 lektioner genomförda"
-                aria-valuenow="67"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                style={{
-                  width: "67%",
-                  backgroundColor: "#174d08",
-                }}
-              />
-            </div>
-          </section>
-
-          <section
-            className="rounded-3 p-3 mb-3"
-            style={{
-              backgroundColor: "#fbefd9",
-            }}
-          >
-            <div className="d-flex align-items-center">
-              <span
-                className="me-3"
-                aria-hidden="true"
-                style={{
-                  fontSize: "2.1rem",
-                }}
-              >
-                🏆
-              </span>
-
-              <div>
-                <p
-                  className="mb-1"
-                  style={{
-                    fontSize: "0.9rem",
-                  }}
-                >
-                  #6 i din klass
-                </p>
-
-                <p
-                  className="mb-0"
-                  style={{
-                    fontSize: "0.9rem",
-                  }}
-                >
-                  #20 i din skola
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section
-            className="rounded-3 position-relative overflow-hidden mb-3 d-flex align-items-center justify-content-center"
+        <div className="d-md-none mt-3">
+          <Cards
+            border="2px solid #ff9f1c"
+            className="position-relative overflow-hidden mb-3"
             style={{
               height: "190px",
-              border: "2px solid #ff9f1c",
-              backgroundColor: "#fbefd9",
             }}
           >
             <img
               src="/glaciärstorlekar.png"
-              alt="Illustration av en glaciär med en nedåtgående pil som visar nästa lektion om glaciärstorlekar"
+              alt="Illustration av nästa lektion om glaciärstorlekar"
               style={{
                 width: "100%",
                 height: "100%",
@@ -159,7 +65,7 @@ function ProfilePage({ onLogout, setPage }) {
               style={{
                 backgroundColor: "#fffdf8",
                 border: "2px solid #ff9f1c",
-                borderRadius: "5px",
+                borderRadius: "6px",
                 color: "#ff8c00",
                 padding: "8px 14px",
                 fontSize: "0.85rem",
@@ -168,16 +74,15 @@ function ProfilePage({ onLogout, setPage }) {
             >
               Påbörja nästa →
             </button>
-          </section>
+          </Cards>
 
           {completedLessons.map((lesson) => (
-            <section
+            <Cards
               key={lesson.page}
-              className="rounded-3 position-relative overflow-hidden mb-3 d-flex align-items-center justify-content-center"
+              border="2px solid #174d08"
+              className="position-relative overflow-hidden mb-3"
               style={{
                 height: "190px",
-                border: "2px solid #174d08",
-                backgroundColor: "#fbefd9",
               }}
             >
               <img
@@ -207,177 +112,22 @@ function ProfilePage({ onLogout, setPage }) {
               >
                 ✓
               </button>
-            </section>
+            </Cards>
           ))}
-
-          <div className="text-center pt-1 pb-3">
-            <button
-              type="button"
-              onClick={onLogout}
-              style={{
-                background: "none",
-                border: "none",
-                padding: 0,
-                color: "#000",
-                fontSize: "0.75rem",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-              }}
-            >
-              Logga ut →
-            </button>
-          </div>
         </div>
-      </div>
 
-      <div className="d-none d-md-block">
-        <div
-          className="container py-4"
-          style={{
-            maxWidth: "1200px",
-          }}
-        >
-          <section
-            className="rounded-3 px-4 py-3 mb-4"
-            style={{
-              backgroundColor: "#e8f7df",
-            }}
-          >
-            <div className="row align-items-center">
-              <div className="col-md-6">
-                <div className="d-flex align-items-center">
-                  <img
-                    src="/AnnaAvatar.png"
-                    alt="Avatar för Anna"
-                    className="rounded-circle me-3"
-                    style={{
-                      width: "74px",
-                      height: "74px",
-                      objectFit: "cover",
-                      border: "1px solid #8a6c3a",
-                    }}
-                  />
-
-                  <div>
-                    <h2
-                      className="mb-1"
-                      style={{
-                        fontSize: "1.05rem",
-                        fontWeight: 400,
-                      }}
-                    >
-                      Välkommen tillbaka Anna!
-                    </h2>
-
-                    <p
-                      className="mb-0"
-                      style={{
-                        fontSize: "0.72rem",
-                        lineHeight: "1.35",
-                      }}
-                    >
-                      Läs igenom en ny lektion för att
-                      <br />
-                      nå dagens mål!
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-md-6">
-                <p
-                  className="mb-2"
-                  style={{
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  2 av 3 lektioner genomförda!
-                </p>
-
-                <div
-                  className="progress"
-                  style={{
-                    height: "22px",
-                    borderRadius: "8px",
-                    backgroundColor: "#fff1d4",
-                    border: "1px solid #8d815f",
-                  }}
-                >
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    aria-label="2 av 3 lektioner genomförda"
-                    aria-valuenow="67"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    style={{
-                      width: "67%",
-                      backgroundColor: "#174d08",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section
-            className="rounded-3 px-4 py-3 mb-4"
-            style={{
-              backgroundColor: "#fbefd9",
-              maxWidth: "860px",
-              margin: "0 auto 1.5rem",
-            }}
-          >
-            <div className="row align-items-center text-center">
-              <div className="col-md-5">
-                <p
-                  className="mb-0"
-                  style={{
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  #6 i din klass
-                </p>
-              </div>
-
-              <div className="col-md-2">
-                <div
-                  aria-hidden="true"
-                  style={{
-                    fontSize: "3rem",
-                    color: "#f5a623",
-                    lineHeight: 1,
-                  }}
-                >
-                  🏆
-                </div>
-              </div>
-
-              <div className="col-md-5">
-                <p
-                  className="mb-0"
-                  style={{
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  #20 i din skola
-                </p>
-              </div>
-            </div>
-          </section>
-
+        <div className="d-none d-md-block mt-4">
           <div className="row g-4 justify-content-center">
             {completedLessons.map((lesson) => (
               <div
                 className="col-md-4 col-lg-3 d-flex"
                 key={lesson.page}
               >
-                <section
-                  className="w-100 rounded-3 position-relative overflow-hidden d-flex align-items-center justify-content-center"
+                <Cards
+                  border="2px solid #174d08"
+                  className="w-100 position-relative overflow-hidden"
                   style={{
                     height: "190px",
-                    border: "2px solid #174d08",
-                    backgroundColor: "#fbefd9",
                   }}
                 >
                   <img
@@ -407,22 +157,21 @@ function ProfilePage({ onLogout, setPage }) {
                   >
                     ✓
                   </button>
-                </section>
+                </Cards>
               </div>
             ))}
 
             <div className="col-md-4 col-lg-3 d-flex">
-              <section
-                className="w-100 rounded-3 position-relative overflow-hidden d-flex align-items-center justify-content-center"
+              <Cards
+                border="2px solid #ff9f1c"
+                className="w-100 position-relative overflow-hidden"
                 style={{
                   height: "190px",
-                  border: "2px solid #ff9f1c",
-                  backgroundColor: "#fbefd9",
                 }}
               >
                 <img
                   src="/glaciärstorlekar.png"
-                  alt="Illustration av en glaciär med en nedåtgående pil som visar nästa lektion om glaciärstorlekar"
+                  alt="Illustration av nästa lektion om glaciärstorlekar"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -446,27 +195,27 @@ function ProfilePage({ onLogout, setPage }) {
                 >
                   Påbörja nästa →
                 </button>
-              </section>
+              </Cards>
             </div>
           </div>
+        </div>
 
-          <div className="text-center mt-4">
-            <button
-              type="button"
-              onClick={onLogout}
-              style={{
-                background: "none",
-                border: "none",
-                padding: 0,
-                color: "#000",
-                fontSize: "0.9rem",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-              }}
-            >
-              Logga ut →
-            </button>
-          </div>
+        <div className="text-center mt-4 pb-3">
+          <button
+            type="button"
+            onClick={onLogout}
+            style={{
+              background: "none",
+              border: "none",
+              padding: 0,
+              color: "#000",
+              fontSize: "0.9rem",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+            }}
+          >
+            Logga ut →
+          </button>
         </div>
       </div>
     </main>

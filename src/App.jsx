@@ -10,6 +10,11 @@ function App() {
   const [page, setPage] = useState("login");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setPage("home");
+  };
+
   const handleLogout = () => {
     setIsLoggedIn(false);
     setPage("login");
@@ -23,19 +28,14 @@ function App() {
         isLoggedIn={isLoggedIn}
       />
 
-      {page === "home" && (
+      {page === "login" && (
+        <LoginPage onLogin={handleLogin} />
+      )}
+
+      {page === "home" && isLoggedIn && (
         <HomePage
           setPage={setPage}
           onLogout={handleLogout}
-        />
-      )}
-
-      {page === "login" && (
-        <LoginPage
-          onLogin={() => {
-            setIsLoggedIn(true);
-            setPage("home");
-          }}
         />
       )}
 
@@ -50,9 +50,10 @@ function App() {
         page === "development" ||
         page === "co2" ||
         page === "temperature" ||
-        page === "glaciers") && (
-        <InformationPage />
-      )}
+        page === "glaciers") &&
+        isLoggedIn && (
+          <InformationPage />
+        )}
     </>
   );
 }
