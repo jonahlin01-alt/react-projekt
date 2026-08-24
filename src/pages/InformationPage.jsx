@@ -18,20 +18,17 @@ function InformationPage() {
 
   return (
     <div className="container py-3">
-
       <h1 className="text-center text-success fw-bold mb-3">
         Koldioxidutsläpp
       </h1>
 
       <div className="row justify-content-center">
-
-        <div className="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-5">
-
-         
+        <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8">
           <Cards>
-           
+            <h5 className="text-center mb-3">
+              Koldioxidutsläpp
+            </h5>
 
-           
             <img
               src="/co2.png"
               alt="Illustration av koldioxidutsläpp"
@@ -58,13 +55,14 @@ function InformationPage() {
             </p>
           </Cards>
 
-
-          
-          <div className="m-2">
+          <div className="mt-3">
             <Cards>
-
-              {co2data.length > 0 && (
+              {co2data.length > 0 ? (
                 <Co2LineChart myData={co2data} />
+              ) : (
+                <p className="text-center small mb-0">
+                  Laddar klimatdata...
+                </p>
               )}
 
               <p className="small mt-3 mb-0">
@@ -75,19 +73,15 @@ function InformationPage() {
                 globala koldioxidutsläppen blivit över 180 gånger
                 större än de var runt år 1850.
               </p>
-
             </Cards>
           </div>
 
-
-          
           <button
             type="button"
             className="btn btn-success w-100 mt-3 py-2"
           >
             Jag har förstått!
           </button>
-
         </div>
       </div>
     </div>

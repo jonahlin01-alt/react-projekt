@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 import {
   LineChart,
@@ -25,59 +26,82 @@ export const Co2LineChart = ({ myData }) => {
 
   return (
     <div>
-
-      
       <div
-        className="w-100"
-        style={{ height: "250px" }}
-        background-
+        className="w-100 rounded"
+        style={{
+          height: "280px",
+          backgroundColor: "#e9f8df",
+        }}
       >
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={filteredData}
             margin={{
-              top: 10,
-              right: 10,
-              left: -20,
-              bottom: 10,
+              top: 15,
+              right: 15,
+              left: 10,
+              bottom: 20,
             }}
           >
-            <XAxis dataKey="Year" />
+            <XAxis
+              dataKey="Year"
+              tickMargin={8}
+              height={35}
+              tick={{
+                fontSize: 11,
+              }}
+            />
 
-            <YAxis />
+            <YAxis
+              width={55}
+              tickMargin={6}
+              tick={{
+                fontSize: 11,
+              }}
+            />
 
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                fontSize: "12px",
+              }}
+            />
 
             <Line
               type="monotone"
               dataKey="Total"
               name="CO₂-utsläpp"
               stroke="#198754"
-              strokeWidth={3}
+              strokeWidth={2.5}
               dot={false}
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-     
-      <p className="text-center small mb-2">
+      <p
+        className="text-center mt-3 mb-2"
+        style={{
+          fontSize: "12px",
+        }}
+      >
         Anpassa diagrammet
       </p>
 
-      
       <div className="row g-2">
-
         <div className="col-6">
           <select
             className="form-select form-select-sm"
             value={startYear}
-            onChange={(e) =>
-              setStartYear(Number(e.target.value))
-            }
+            onChange={(e) => setStartYear(Number(e.target.value))}
+            style={{
+              fontSize: "12px",
+            }}
           >
             {years.map((year) => (
-              <option key={year} value={year}>
+              <option
+                key={`start-${year}`}
+                value={year}
+              >
                 {year}
               </option>
             ))}
@@ -88,20 +112,22 @@ export const Co2LineChart = ({ myData }) => {
           <select
             className="form-select form-select-sm"
             value={endYear}
-            onChange={(e) =>
-              setEndYear(Number(e.target.value))
-            }
+            onChange={(e) => setEndYear(Number(e.target.value))}
+            style={{
+              fontSize: "12px",
+            }}
           >
             {years.map((year) => (
-              <option key={year} value={year}>
+              <option
+                key={`end-${year}`}
+                value={year}
+              >
                 {year}
               </option>
             ))}
           </select>
         </div>
-
       </div>
-
     </div>
   );
 };
