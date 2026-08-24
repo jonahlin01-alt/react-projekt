@@ -25,9 +25,7 @@ function InformationPage() {
       <div className="row justify-content-center">
         <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8">
           <Cards>
-            <h5 className="text-center mb-3">
-              Koldioxidutsläpp
-            </h5>
+          
 
             <img
               src="/co2.png"

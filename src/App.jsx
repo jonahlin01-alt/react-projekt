@@ -24,7 +24,10 @@ function App() {
       />
 
       {page === "home" && (
-        <HomePage onLogout={handleLogout} />
+        <HomePage
+          setPage={setPage}
+          onLogout={handleLogout}
+        />
       )}
 
       {page === "login" && (
