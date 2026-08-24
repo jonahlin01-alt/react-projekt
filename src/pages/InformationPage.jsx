@@ -10,7 +10,9 @@ function InformationPage() {
       .then((data) => {
         setCo2data(data);
       })
-      
+      .catch((error) => {
+        console.error("Kunde inte hämta CO₂-data:", error);
+      });
   }, []);
 
   return (
@@ -27,11 +29,9 @@ function InformationPage() {
         }}
       >
         <h1
-          className="text-center mb-4"
+          className="page-title text-center mb-4"
           style={{
             color: "#174d08",
-            fontFamily: '"Fontdiner Swanky", serif',
-            fontSize: "2rem",
           }}
         >
           Koldioxidutsläpp
@@ -47,7 +47,7 @@ function InformationPage() {
             >
               <img
                 src="/koldioxidutsläpp.png"
-                alt="Illustration av koldioxidutsläpp från en fabrik med en CO₂-symbol"
+                alt="Illustration av en fabrik och koldioxidutsläpp"
                 className="img-fluid mb-4"
                 style={{
                   width: "100%",
@@ -56,13 +56,7 @@ function InformationPage() {
                 }}
               />
 
-              <p
-                className="mb-3"
-                style={{
-                  fontSize: "0.85rem",
-                  lineHeight: "1.45",
-                }}
-              >
+              <p className="mb-3">
                 Koldioxidutsläpp kommer från saker vi människor gör,
                 som att köra bil, flyga, använda elektricitet som
                 produceras med fossila bränslen eller tillverka varor
@@ -73,13 +67,7 @@ function InformationPage() {
                 filt runt jorden och gör planeten varmare.
               </p>
 
-              <p
-                className="mb-0"
-                style={{
-                  fontSize: "0.85rem",
-                  lineHeight: "1.45",
-                }}
-              >
+              <p className="mb-0">
                 När jorden blir varmare påverkas både klimatet och
                 naturen. Det kan leda till smältande glaciärer,
                 stigande havsnivåer och fler extrema väderhändelser
@@ -108,17 +96,13 @@ function InformationPage() {
                     minHeight: "300px",
                   }}
                 >
-                  
+                  <p className="mb-0">
+                    Laddar klimatdata...
+                  </p>
                 </div>
               )}
 
-              <p
-                className="mt-4 mb-0"
-                style={{
-                  fontSize: "0.85rem",
-                  lineHeight: "1.45",
-                }}
-              >
+              <p className="mt-4 mb-0">
                 Under de senaste 200 åren har koldioxidutsläppen
                 ökat enormt, framför allt på grund av att människor
                 började använda maskiner och fabriker under

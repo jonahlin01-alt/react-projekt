@@ -2,390 +2,227 @@ import { useState } from "react";
 
 function Navbar({ activePage, setPage, isLoggedIn }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const navBackground = isLoggedIn ? "#164d05" : "#ffffff";
-  const navColor = isLoggedIn ? "#ffffff" : "#164d05";
+  const backgroundColor = isLoggedIn ? "#164d05" : "#ffffff";
+  const textColor = isLoggedIn ? "#ffffff" : "#164d05";
+
+  const developmentPages = [
+    { label: "Koldioxidutsläpp", page: "co2" },
+    { label: "Globala temperaturer", page: "temperature" },
+    { label: "Glaciärstorlekar", page: "glaciers" },
+  ];
+
+  const developmentActive = developmentPages.some(
+    (item) => item.page === activePage
+  );
 
   const goToPage = (page) => {
     setPage(page);
     setMobileOpen(false);
-    setShowDropdown(false);
+    setDropdownOpen(false);
   };
 
-  const developmentActive =
-    activePage === "development" ||
-    activePage === "co2" ||
-    activePage === "temperature" ||
-    activePage === "glaciers";
-
-  const desktopNavStyle = (isActive) => ({
-    color: navColor,
-    fontSize: "1.05rem",
-    textDecoration: "none",
-    border: "none",
-    borderBottom: isActive
-      ? `2px solid ${navColor}`
-      : "2px solid transparent",
-    borderRadius: 0,
-    padding: "4px 6px 0",
+  const navLinkStyle = (active) => ({
     background: "none",
-  });
-
-  const mobileMainStyle = (isActive) => ({
-    color: navColor,
-    fontSize: "1.25rem",
-    textDecoration: "none",
     border: "none",
-    borderBottom: isActive
-      ? `2px solid ${navColor}`
+    borderBottom: active
+      ? `2px solid ${textColor}`
       : "2px solid transparent",
-    borderRadius: 0,
+    color: textColor,
     padding: "2px 0",
-    background: "none",
-    width: "fit-content",
-    textAlign: "left",
-  });
-
-  const mobileSubStyle = (isActive) => ({
-    color: navColor,
-    fontSize: "0.95rem",
-    textDecoration: isActive ? "underline" : "none",
-    textUnderlineOffset: "3px",
-    border: "none",
-    padding: "3px 0",
-    background: "none",
-    textAlign: "left",
+    textDecoration: "none",
   });
 
   return (
-    <>
-      <nav
-        className="d-none d-lg-block"
+    <nav
+      style={{
+        backgroundColor,
+        color: textColor,
+        position: "relative",
+        zIndex: 10,
+        borderBottom: isLoggedIn ? "none" : "1px solid #e5e5e5",
+      }}
+    >
+      <div
+        className="container-fluid d-flex align-items-center justify-content-between"
         style={{
-          backgroundColor: navBackground,
-          position: "relative",
-          zIndex: 2000,
-          borderBottom: isLoggedIn
-            ? "none"
-            : "1px solid #e5e5e5",
+          height: "58px",
+          maxWidth: "1200px",
         }}
       >
-        <div
-          className="container-fluid d-flex align-items-center"
+        <button
+          type="button"
+          onClick={() => goToPage("home")}
           style={{
-            minHeight: "58px",
+            background: "none",
+            border: "none",
+            color: textColor,
+            fontFamily: '"Fontdiner Swanky", serif',
+            fontSize: "1.6rem",
+            padding: 0,
           }}
         >
+          Klimatinfo
+        </button>
+
+        <div className="d-none d-lg-flex align-items-center gap-4">
           <button
             type="button"
             onClick={() => goToPage("home")}
-            style={{
-              fontFamily: '"Fontdiner Swanky", serif',
-              fontSize: "1.65rem",
-              color: navColor,
-              background: "none",
-              border: "none",
-              padding: 0,
-            }}
+            style={navLinkStyle(activePage === "home")}
           >
-            Klimatinfo
+            Start
           </button>
 
-          <div className="d-flex align-items-center ms-auto gap-2">
+          <span style={{ opacity: 0.7 }}>|</span>
+
+          <div className="position-relative">
+            <button
+              type="button"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              style={navLinkStyle(developmentActive)}
+            >
+              Utveckling
+            </button>
+
+            {dropdownOpen && (
+              <div
+                className="position-absolute shadow rounded-2 py-2"
+                style={{
+                  top: "34px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "220px",
+                  backgroundColor,
+                }}
+              >
+                {developmentPages.map((item) => (
+                  <button
+                    key={item.page}
+                    type="button"
+                    onClick={() => goToPage(item.page)}
+                    className="d-block w-100 text-start px-3 py-2"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: textColor,
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <span style={{ opacity: 0.7 }}>|</span>
+
+          <button
+            type="button"
+            onClick={() =>
+              goToPage(isLoggedIn ? "profile" : "login")
+            }
+            style={navLinkStyle(
+              activePage === (isLoggedIn ? "profile" : "login")
+            )}
+          >
+            {isLoggedIn ? "Profil" : "Logga in"}
+          </button>
+        </div>
+
+        <button
+          type="button"
+          className="d-lg-none"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Stäng meny" : "Öppna meny"}
+          style={{
+            background: "none",
+            border: "none",
+            color: textColor,
+            fontSize: "1.7rem",
+            width: "40px",
+            height: "40px",
+          }}
+        >
+          {mobileOpen ? "×" : "☰"}
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <div
+          className="d-lg-none position-absolute end-0 p-4 shadow"
+          style={{
+            top: "58px",
+            width: "72%",
+            maxWidth: "280px",
+            minHeight: "500px",
+            backgroundColor,
+          }}
+        >
+          <div className="d-flex flex-column align-items-start gap-4">
             <button
               type="button"
               onClick={() => goToPage("home")}
-              style={desktopNavStyle(activePage === "home")}
+              style={navLinkStyle(activePage === "home")}
             >
               Start
             </button>
 
-            <div
-              style={{
-                width: "1px",
-                height: "20px",
-                backgroundColor: navColor,
-                opacity: 0.8,
-              }}
-            />
-
-            <div className="position-relative">
-              <button
-                type="button"
-                onClick={() => setShowDropdown((prev) => !prev)}
-                style={desktopNavStyle(developmentActive)}
-              >
-                Utveckling
-              </button>
-
-              {showDropdown && (
-                <div
-                  className="position-absolute end-0 mt-2 rounded p-2"
-                  style={{
-                    minWidth: "220px",
-                    zIndex: 3000,
-                    backgroundColor: navBackground,
-                    border: isLoggedIn
-                      ? "none"
-                      : "1px solid #e5e5e5",
-                    boxShadow: "0 8px 18px rgba(0, 0, 0, 0.15)",
-                  }}
-                >
-                  <button
-                    type="button"
-                    className="d-block w-100 text-start"
-                    onClick={() => goToPage("co2")}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: navColor,
-                      padding: "8px 10px",
-                    }}
-                  >
-                    Koldioxidutsläpp
-                  </button>
-
-                  <button
-                    type="button"
-                    className="d-block w-100 text-start"
-                    onClick={() => goToPage("temperature")}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: navColor,
-                      padding: "8px 10px",
-                    }}
-                  >
-                    Globala temperaturer
-                  </button>
-
-                  <button
-                    type="button"
-                    className="d-block w-100 text-start"
-                    onClick={() => goToPage("glaciers")}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: navColor,
-                      padding: "8px 10px",
-                    }}
-                  >
-                    Glaciärstorlekar
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <div
-              style={{
-                width: "1px",
-                height: "20px",
-                backgroundColor: navColor,
-                opacity: 0.8,
-              }}
-            />
-
-            {isLoggedIn ? (
-              <button
-                type="button"
-                onClick={() => goToPage("profile")}
-                style={desktopNavStyle(activePage === "profile")}
-              >
-                Profil
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => goToPage("login")}
-                style={desktopNavStyle(activePage === "login")}
-              >
-                Logga in
-              </button>
-            )}
-          </div>
-        </div>
-      </nav>
-
-      <nav
-        className="d-lg-none"
-        style={{
-          position: "relative",
-          zIndex: 2000,
-        }}
-      >
-        <div
-          className="d-flex align-items-center justify-content-between px-3"
-          style={{
-            height: "58px",
-            backgroundColor: navBackground,
-            borderBottom: isLoggedIn
-              ? "none"
-              : "1px solid #e5e5e5",
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => goToPage("home")}
-            style={{
-              fontFamily: '"Fontdiner Swanky", serif',
-              fontSize: "1.55rem",
-              color: navColor,
-              background: "none",
-              border: "none",
-              padding: 0,
-            }}
-          >
-            Klimatinfo
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label={mobileOpen ? "Stäng meny" : "Öppna meny"}
-            style={{
-              width: "40px",
-              height: "40px",
-              background: "none",
-              border: "none",
-              color: navColor,
-              padding: 0,
-              position: "relative",
-            }}
-          >
-            {mobileOpen ? (
-              <>
-                <span
-                  style={{
-                    position: "absolute",
-                    width: "25px",
-                    height: "1px",
-                    backgroundColor: navColor,
-                    left: "7px",
-                    top: "19px",
-                    transform: "rotate(45deg)",
-                  }}
-                />
-
-                <span
-                  style={{
-                    position: "absolute",
-                    width: "25px",
-                    height: "1px",
-                    backgroundColor: navColor,
-                    left: "7px",
-                    top: "19px",
-                    transform: "rotate(-45deg)",
-                  }}
-                />
-              </>
-            ) : (
+            <div>
               <span
                 style={{
-                  fontSize: "1.7rem",
-                  lineHeight: 1,
+                  display: "inline-block",
+                  borderBottom: developmentActive
+                    ? `2px solid ${textColor}`
+                    : "2px solid transparent",
+                  fontSize: "1.1rem",
+                  marginBottom: "8px",
                 }}
               >
-                ☰
+                Utveckling
               </span>
-            )}
-          </button>
-        </div>
 
-        {mobileOpen && (
-          <div
-            style={{
-              position: "absolute",
-              top: "58px",
-              right: 0,
-              width: "72%",
-              maxWidth: "280px",
-              minHeight: "500px",
-              backgroundColor: navBackground,
-              padding: "25px 26px",
-              zIndex: 3000,
-              boxShadow: "-8px 10px 24px rgba(0, 0, 0, 0.22)",
-              borderLeft: isLoggedIn
-                ? "none"
-                : "1px solid #e5e5e5",
-              borderBottom: isLoggedIn
-                ? "none"
-                : "1px solid #e5e5e5",
-            }}
-          >
-            <div className="d-flex flex-column align-items-start gap-4">
-              <button
-                type="button"
-                onClick={() => goToPage("home")}
-                style={mobileMainStyle(activePage === "home")}
-              >
-                Start
-              </button>
-
-              <div className="d-flex flex-column align-items-start">
-                <button
-                  type="button"
-                  onClick={() => goToPage("development")}
-                  style={mobileMainStyle(developmentActive)}
-                >
-                  Utveckling
-                </button>
-
-                <div
-                  className="d-flex flex-column mt-2"
-                  style={{
-                    paddingLeft: "8px",
-                    gap: "2px",
-                  }}
-                >
+              <div className="d-flex flex-column align-items-start gap-1">
+                {developmentPages.map((item) => (
                   <button
+                    key={item.page}
                     type="button"
-                    onClick={() => goToPage("co2")}
-                    style={mobileSubStyle(activePage === "co2")}
+                    onClick={() => goToPage(item.page)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: textColor,
+                      padding: "2px 0",
+                      textDecoration:
+                        activePage === item.page
+                          ? "underline"
+                          : "none",
+                      textUnderlineOffset: "3px",
+                      fontSize: "0.95rem",
+                    }}
                   >
-                    Koldioxidutsläpp
+                    {item.label}
                   </button>
-
-                  <button
-                    type="button"
-                    onClick={() => goToPage("temperature")}
-                    style={mobileSubStyle(activePage === "temperature")}
-                  >
-                    Globala temperaturer
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => goToPage("glaciers")}
-                    style={mobileSubStyle(activePage === "glaciers")}
-                  >
-                    Glaciärstorlekar
-                  </button>
-                </div>
+                ))}
               </div>
-
-              {isLoggedIn ? (
-                <button
-                  type="button"
-                  onClick={() => goToPage("profile")}
-                  style={mobileMainStyle(activePage === "profile")}
-                >
-                  Profil
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => goToPage("login")}
-                  style={mobileMainStyle(activePage === "login")}
-                >
-                  Logga in
-                </button>
-              )}
             </div>
+
+            <button
+              type="button"
+              onClick={() =>
+                goToPage(isLoggedIn ? "profile" : "login")
+              }
+              style={navLinkStyle(
+                activePage === (isLoggedIn ? "profile" : "login")
+              )}
+            >
+              {isLoggedIn ? "Profil" : "Logga in"}
+            </button>
           </div>
-        )}
-      </nav>
-    </>
+        </div>
+      )}
+    </nav>
   );
 }
 

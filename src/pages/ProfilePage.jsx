@@ -42,10 +42,11 @@ function ProfilePage({ onLogout, setPage }) {
 
         <div className="d-md-none mt-3">
           <Cards
-            border="2px solid #ff9f1c"
             className="position-relative overflow-hidden mb-3"
             style={{
               height: "190px",
+              backgroundColor: "#fbefd9",
+              border: "2px solid #ff9f1c",
             }}
           >
             <img
@@ -68,7 +69,6 @@ function ProfilePage({ onLogout, setPage }) {
                 borderRadius: "6px",
                 color: "#ff8c00",
                 padding: "8px 14px",
-                fontSize: "0.85rem",
                 whiteSpace: "nowrap",
               }}
             >
@@ -79,10 +79,11 @@ function ProfilePage({ onLogout, setPage }) {
           {completedLessons.map((lesson) => (
             <Cards
               key={lesson.page}
-              border="2px solid #174d08"
               className="position-relative overflow-hidden mb-3"
               style={{
                 height: "190px",
+                backgroundColor: "#fbefd9",
+                border: "2px solid #174d08",
               }}
             >
               <img
@@ -106,7 +107,6 @@ function ProfilePage({ onLogout, setPage }) {
                   backgroundColor: "#e8f7df",
                   border: "3px solid #174d08",
                   color: "#174d08",
-                  fontSize: "2.2rem",
                   lineHeight: 1,
                 }}
               >
@@ -124,10 +124,11 @@ function ProfilePage({ onLogout, setPage }) {
                 key={lesson.page}
               >
                 <Cards
-                  border="2px solid #174d08"
                   className="w-100 position-relative overflow-hidden"
                   style={{
                     height: "190px",
+                    backgroundColor: "#fbefd9",
+                    border: "2px solid #174d08",
                   }}
                 >
                   <img
@@ -151,7 +152,6 @@ function ProfilePage({ onLogout, setPage }) {
                       backgroundColor: "#e8f7df",
                       border: "4px solid #174d08",
                       color: "#174d08",
-                      fontSize: "2.7rem",
                       lineHeight: 1,
                     }}
                   >
@@ -163,10 +163,11 @@ function ProfilePage({ onLogout, setPage }) {
 
             <div className="col-md-4 col-lg-3 d-flex">
               <Cards
-                border="2px solid #ff9f1c"
                 className="w-100 position-relative overflow-hidden"
                 style={{
                   height: "190px",
+                  backgroundColor: "#fbefd9",
+                  border: "2px solid #ff9f1c",
                 }}
               >
                 <img
@@ -189,7 +190,6 @@ function ProfilePage({ onLogout, setPage }) {
                     borderRadius: "6px",
                     color: "#ff9f1c",
                     padding: "10px 18px",
-                    fontSize: "0.95rem",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -209,7 +209,6 @@ function ProfilePage({ onLogout, setPage }) {
               border: "none",
               padding: 0,
               color: "#000",
-              fontSize: "0.9rem",
               textDecoration: "underline",
               textUnderlineOffset: "3px",
             }}

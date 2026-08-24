@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   LineChart,
   Line,
@@ -12,60 +11,45 @@ import {
 export const Co2LineChart = ({ myData }) => {
   const years = myData.map((item) => Number(item.Year));
 
-  const minYear = Math.min(...years);
-  const maxYear = Math.max(...years);
-
-  const [startYear, setStartYear] = useState(minYear);
-  const [endYear, setEndYear] = useState(maxYear);
+  const [startYear, setStartYear] = useState(Math.min(...years));
+  const [endYear, setEndYear] = useState(Math.max(...years));
 
   const filteredData = myData.filter((item) => {
     const year = Number(item.Year);
-
     return year >= startYear && year <= endYear;
   });
 
   return (
     <div>
       <div
-        className="w-100 rounded-3"
+        className="w-100 rounded-3 p-2"
         style={{
-          height: "280px",
+          height: "300px",
           backgroundColor: "#fff0cf",
-          padding: "12px 8px 4px 4px",
         }}
       >
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={filteredData}
             margin={{
-              top: 15,
-              right: 15,
+              top: 10,
+              right: 10,
               left: 10,
               bottom: 20,
             }}
           >
             <XAxis
               dataKey="Year"
-              height={35}
-              tickMargin={7}
-              tick={{
-                fontSize: 10,
-              }}
+              height={45}
+              tickMargin={8}
             />
 
             <YAxis
-              width={55}
-              tickMargin={5}
-              tick={{
-                fontSize: 10,
-              }}
+              width={70}
+              tickMargin={6}
             />
 
-            <Tooltip
-              contentStyle={{
-                fontSize: "11px",
-              }}
-            />
+            <Tooltip />
 
             <Line
               type="monotone"
@@ -79,24 +63,16 @@ export const Co2LineChart = ({ myData }) => {
         </ResponsiveContainer>
       </div>
 
-      <p
-        className="text-center mt-3 mb-2"
-        style={{
-          fontSize: "0.7rem",
-        }}
-      >
+      <p className="text-center mt-3 mb-2">
         Anpassa diagrammet
       </p>
 
-      <div className="row g-2 justify-content-center">
+      <div className="row g-2">
         <div className="col-6">
           <select
-            className="form-select form-select-sm"
+            className="form-select"
             value={startYear}
             onChange={(e) => setStartYear(Number(e.target.value))}
-            style={{
-              fontSize: "0.7rem",
-            }}
           >
             {years.map((year) => (
               <option
@@ -111,12 +87,9 @@ export const Co2LineChart = ({ myData }) => {
 
         <div className="col-6">
           <select
-            className="form-select form-select-sm"
+            className="form-select"
             value={endYear}
             onChange={(e) => setEndYear(Number(e.target.value))}
-            style={{
-              fontSize: "0.7rem",
-            }}
           >
             {years.map((year) => (
               <option
