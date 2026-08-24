@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 
 function Navbar({ activePage, setPage, isLoggedIn }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -21,23 +21,37 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
 
   const handleNavClick = (value) => {
     if (value === "development") {
-      setShowDropdown(!showDropdown);
-    } else {
-      setShowDropdown(false);
-      setMobileOpen(false);
-      if (setPage) setPage(value);
+      setShowDropdown((prev) => !prev);
+      return;
+    }
+
+    setShowDropdown(false);
+    setMobileOpen(false);
+
+    if (setPage) {
+      setPage(value);
     }
   };
 
   const handleDropdownClick = (value) => {
     setShowDropdown(false);
     setMobileOpen(false);
-    if (setPage) setPage(value);
+
+    if (setPage) {
+      setPage(value);
+    }
+  };
+
+  const handleMobileToggle = () => {
+    setMobileOpen((prev) => !prev);
+    setShowDropdown(false);
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg ${navbarBgClass} border-bottom`}>
-      <div className="container-fluid position-relative">
+    <nav
+      className={`navbar navbar-expand-lg ${navbarBgClass} border-bottom custom-navbar`}
+    >
+      <div className="container-fluid custom-navbar-container">
         <button
           type="button"
           className="navbar-brand btn btn-link text-decoration-none p-0"
@@ -48,7 +62,7 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
           }}
           style={{
             fontFamily: '"Fontdiner Swanky", serif',
-            fontSize: "1.8rem",
+            fontSize: "1.55rem",
             color: textColor,
           }}
         >
@@ -60,12 +74,20 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
           type="button"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={handleMobileToggle}
         >
-          <span className="navbar-toggler-icon"></span>
+          {mobileOpen ? (
+            <span className="text-white fs-2">×</span>
+          ) : (
+            <span className="navbar-toggler-icon"></span>
+          )}
         </button>
 
-        <div className={`navbar-collapse ${mobileOpen ? "show" : "collapse"}`}>
+        <div
+          className={`navbar-collapse ${
+            mobileOpen ? "show" : "collapse"
+          } mobile-navbar-collapse`}
+        >
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex flex-column flex-lg-row align-items-lg-center position-relative gap-2 gap-lg-0">
             {navItems.map((item, index) => (
               <li
@@ -83,8 +105,6 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
                     textDecorationColor: textColor,
                     textDecorationThickness: "2px",
                     textUnderlineOffset: "6px",
-                    border: "none",
-                    background: "none",
                     fontSize: "1.4rem",
                   }}
                 >
@@ -93,14 +113,12 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
 
                 {item.value === "development" && showDropdown && (
                   <div
-                    className={`position-lg-absolute static-lg position-relative top-lg-100 end-lg-0 mt-lg-3 mt-2 rounded shadow p-3 ${
+                    className={`mobile-development-dropdown ${
                       isLoggedIn ? "bg-success" : "bg-light"
                     }`}
-                    style={{ minWidth: "220px", zIndex: 1000 }}
                   >
                     <button
                       type="button"
-                      className="btn btn-link text-decoration-none d-block w-100 text-start mb-2"
                       onClick={() => handleDropdownClick("co2")}
                       style={{ color: textColor }}
                     >
@@ -109,7 +127,6 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
 
                     <button
                       type="button"
-                      className="btn btn-link text-decoration-none d-block w-100 text-start mb-2"
                       onClick={() => handleDropdownClick("temperature")}
                       style={{ color: textColor }}
                     >
@@ -118,7 +135,6 @@ function Navbar({ activePage, setPage, isLoggedIn }) {
 
                     <button
                       type="button"
-                      className="btn btn-link text-decoration-none d-block w-100 text-start"
                       onClick={() => handleDropdownClick("glaciers")}
                       style={{ color: textColor }}
                     >

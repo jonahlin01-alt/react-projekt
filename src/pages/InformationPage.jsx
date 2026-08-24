@@ -17,43 +17,78 @@ function InformationPage() {
   }, []);
 
   return (
-    <div className="container py-4">
-      <h1 className="mt-4">Koldioxidutsläpp</h1>
+    <div className="container py-3">
 
-      <p>
-        Här hittar du aktuell klimatdata och utvecklingsinformation.
-      </p>
+      <h1 className="text-center text-success fw-bold mb-3">
+        Koldioxidutsläpp
+      </h1>
 
-      <div className="row g-4 mt-2">
+      <div className="row justify-content-center">
 
-      
-        <div className="col-12">
-          <Cards title="Globala CO₂-utsläpp"> 
-          <Cards text= "Anpassa Diagrammet"></Cards>
+        <div className="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-5">
 
-            {co2data.length > 0 && (
-              <Co2LineChart myData={co2data} />
-            )}
+         
+          <Cards>
+           
+
+           
+            <img
+              src="/co2.png"
+              alt="Illustration av koldioxidutsläpp"
+              className="img-fluid rounded mb-3"
+            />
+
+            <p className="small mb-0">
+              Koldioxidutsläpp kommer från saker vi människor gör,
+              som att köra bil, flyga, använda elektricitet som
+              produceras med fossila bränslen eller tillverka varor
+              i fabriker. När vi bränner kol, olja och gas släpps
+              koldioxid (CO₂) ut i luften. Det är en gas som inte är
+              farlig i sig – vi andas ut den varje dag – men när det
+              blir för mycket av den i atmosfären fungerar den som en
+              filt runt jorden och gör planeten varmare.
+            </p>
+
+            <p className="small mt-3 mb-0">
+              När jorden blir varmare påverkas både klimatet och
+              naturen. Det kan leda till smältande glaciärer,
+              stigande havsnivåer och fler extrema väderhändelser.
+              Därför försöker forskare och samhällen runt om i världen
+              hitta sätt att minska våra utsläpp.
+            </p>
           </Cards>
+
+
+          
+          <div className="m-2">
+            <Cards>
+
+              {co2data.length > 0 && (
+                <Co2LineChart myData={co2data} />
+              )}
+
+              <p className="small mt-3 mb-0">
+                Under de senaste 200 åren har koldioxidutsläppen
+                ökat enormt, framför allt på grund av att människor
+                började använda maskiner och fabriker under
+                industrialiseringen. Enligt historiska data har de
+                globala koldioxidutsläppen blivit över 180 gånger
+                större än de var runt år 1850.
+              </p>
+
+            </Cards>
+          </div>
+
+
+          
+          <button
+            type="button"
+            className="btn btn-success w-100 mt-3 py-2"
+          >
+            Jag har förstått!
+          </button>
+
         </div>
-
-        
-        <div className="col-12 col-md-6 col-lg-4">
-          <Cards
-            title="CO₂-utsläpp"
-            text="Under de senaste 200 åren har koldioxidutsläppen ökat enormt, framför allt på grund av att människor började använda maskiner och fabriker under industrialiseringen. Enligt historiska data har de globala koldioxidutsläppen blivit över 180 gånger större än de var runt år 1850. Forskare kan också se i mätningar att mängden koldioxid i luften nu är över 50 % högre än före industrialismen."
-            buttonText="Visa mer"
-            onButtonClick={() => alert("CO₂")}
-          />
-        </div>
-
-        <button
-          type="button"
-          className="btn btn-success w-75 py-3 fs-5"
-        >
-          Jag har förstått!
-        </button>
-
       </div>
     </div>
   );

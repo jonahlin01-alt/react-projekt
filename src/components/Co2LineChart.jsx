@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import {
   LineChart,
   Line,
@@ -25,10 +25,12 @@ export const Co2LineChart = ({ myData }) => {
 
   return (
     <div>
-      {/* Diagram */}
+
+      
       <div
         className="w-100"
-        style={{ height: "300px" }}
+        style={{ height: "250px" }}
+        background-
       >
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
@@ -36,12 +38,14 @@ export const Co2LineChart = ({ myData }) => {
             margin={{
               top: 10,
               right: 10,
-              left: -15,
+              left: -20,
               bottom: 10,
             }}
           >
             <XAxis dataKey="Year" />
+
             <YAxis />
+
             <Tooltip />
 
             <Line
@@ -49,25 +53,23 @@ export const Co2LineChart = ({ myData }) => {
               dataKey="Total"
               name="CO₂-utsläpp"
               stroke="#198754"
+              strokeWidth={3}
               dot={false}
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Startår och slutår */}
-      <div className="row g-2 mt-2">
+     
+      <p className="text-center small mb-2">
+        Anpassa diagrammet
+      </p>
+
+      
+      <div className="row g-2">
 
         <div className="col-6">
-          <label
-            htmlFor="startYear"
-            className="form-label small mb-1"
-          >
-            Startår
-          </label>
-
           <select
-            id="startYear"
             className="form-select form-select-sm"
             value={startYear}
             onChange={(e) =>
@@ -83,15 +85,7 @@ export const Co2LineChart = ({ myData }) => {
         </div>
 
         <div className="col-6">
-          <label
-            htmlFor="endYear"
-            className="form-label small mb-1"
-          >
-            Slutår
-          </label>
-
           <select
-            id="endYear"
             className="form-select form-select-sm"
             value={endYear}
             onChange={(e) =>
@@ -107,6 +101,7 @@ export const Co2LineChart = ({ myData }) => {
         </div>
 
       </div>
+
     </div>
   );
 };
